@@ -1601,6 +1601,7 @@ input, select, textarea {
     }
 }
 /* About section image tuning */
+/* About section image refinement */
 .about__image {
     display: flex;
     justify-content: center;
@@ -1610,11 +1611,13 @@ input, select, textarea {
 .about__image-inner {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .about__img {
-    width: 85%;
-    max-width: 320px;
+    width: 75%;
+    max-width: 280px;
     height: auto;
     border-radius: 16px;
+    object-fit: cover;
 }
