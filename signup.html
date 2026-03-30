@@ -1,179 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WellBodyMind — Yoga for Wellness in Dryden</title>
-    <meta name="description" content="WellBodyMind offers yoga and qigong classes in Dryden, NY. Strengthen body, refine breath, cultivate clarity with instructor Brian Winters at the Dryden Community Center.">
-    <meta property="og:title" content="WellBodyMind — Yoga for Wellness in Dryden">
-    <meta property="og:description" content="Yoga and qigong classes at the Dryden Community Center. Sundays, Tuesdays & Thursdays at 8am. Private sessions available.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.wellbodymind.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration | WellBodyMind Yoga</title>
+
+  <!-- Use the same stylesheet your homepage uses -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+
+  <style>
+    .signup-page {
+      position: relative;
+      min-height: 100vh;
+      padding: 7rem 1.25rem 4rem;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(250, 247, 242, 0.88), rgba(255, 255, 255, 0.94)),
+        url("assets/images/hero-sm-group-yoga-on-mats.avif") center/cover no-repeat;
+    }
+
+    .signup-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(148, 123, 173, 0.10), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(147, 170, 120, 0.10), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(210, 190, 150, 0.12), transparent 35%);
+      pointer-events: none;
+    }
+
+    .signup-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .signup-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(180, 168, 145, 0.28);
+      border-radius: 24px;
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.10);
+      padding: 2rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .signup-logo {
+      display: block;
+      margin: 0 auto 1rem;
+      width: 110px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .signup-card h1 {
+      margin: 0 0 0.75rem;
+      text-align: center;
+    }
+
+    .signup-intro {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .signup-form fieldset {
+      border: 1px solid #ddd5c4;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 0 0 1.5rem;
+      background: #fcfbf8;
+    }
+
+    .signup-form legend {
+      padding: 0 0.5rem;
+      font-weight: 700;
+      color: #5d5342;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .signup-form label {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+      color: #4f473a;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="tel"],
+    .signup-form input[type="date"],
+    .signup-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.9rem 1rem;
+      border: 1px solid #cfc7b5;
+      border-radius: 12px;
+      background: #fff;
+      font: inherit;
+      color: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .signup-form input:focus,
+    .signup-form textarea:focus {
+      outline: none;
+      border-color: #8ea06b;
+      box-shadow: 0 0 0 3px rgba(142, 160, 107, 0.14);
+      background: #fff;
+    }
+
+    .signup-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .question-block {
+      margin-bottom: 1.5rem;
+    }
+
+    .question-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      color: #4f473a;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.85rem;
+    }
+
+    .radio-group label,
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-weight: 400;
+    }
+
+    .radio-group input,
+    .checkbox-row input {
+      width: auto;
+      margin: 0.2rem 0 0;
+      flex: 0 0 auto;
+    }
+
+    .waiver-text {
+      background: #f7f4ec;
+      border: 1px solid #ddd5c4;
+      border-radius: 16px;
+      padding: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .waiver-text p {
+      margin: 0 0 1rem;
+    }
+
+    .waiver-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .waiver-text ul {
+      margin: 0.5rem 0 1rem 1.25rem;
+      padding: 0;
+    }
+
+    .submit-wrapper {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+      border-top: 1px solid #e4ddd0;
+      text-align: center;
+    }
+
+    .submit-button {
+      display: inline-block;
+      min-width: 240px;
+      border: none;
+      border-radius: 999px;
+      padding: 1rem 2rem;
+      background: #7a8f45;
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.20);
+      opacity: 0.98;
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+    }
+
+    .footer-spacer {
+      height: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .signup-page {
+        padding-top: 6rem;
+      }
+
+      .signup-card {
+        padding: 1.25rem;
+        border-radius: 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .submit-button {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
 </head>
-<section class="signup-section">
-  <div class="signup-container">
-    <h1>WellBodyMind Yoga Registration</h1>
-    <p>
-      Please complete this form before attending class. This includes your intake
-      information and liability waiver acknowledgment.
-    </p>
+<body>
 
-    <form action="https://formspree.io/f/xykbwnpo" method="POST">
-      <input type="hidden" name="_subject" value="New WellBodyMind registration submission" />
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html#hero" class="nav__brand">
+        <img src="wbm-logo-2.avif" alt="WellBodyMind" class="nav__logo" />
+      </a>
 
-      <fieldset>
-        <legend>Participant Information</legend>
+      <nav class="nav__links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html#hero" class="nav__link">Home</a>
+        <a href="index.html#welcome" class="nav__link">Welcome</a>
+        <a href="index.html#classes" class="nav__link">Classes</a>
+        <a href="index.html#about" class="nav__link">About</a>
+        <a href="signup.html" class="nav__link">Registration</a>
+        <a href="index.html#contact" class="nav__link">Contact</a>
+      </nav>
 
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="full_name" required />
+      <button class="nav__hamburger" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
 
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="date_of_birth" required />
+  <div class="mobile-overlay" id="mobileOverlay"></div>
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone_number" required />
+  <!-- Main -->
+  <main class="signup-page">
+    <section class="signup-shell">
+      <div class="signup-card">
+        <img src="wbm-logo-2.avif" alt="WellBodyMind Yoga logo" class="signup-logo" />
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email_address" required />
+        <h1>WellBodyMind Yoga Registration</h1>
+        <p class="signup-intro">
+          Please complete this form before attending class. This includes your intake
+          information and liability waiver acknowledgment.
+        </p>
 
-        <label for="emergencyContact">Emergency Contact Name & Phone</label>
-        <input
-          type="text"
-          id="emergencyContact"
-          name="emergency_contact"
-          required
-        />
-      </fieldset>
+        <form
+          class="signup-form"
+          action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New WellBodyMind registration submission" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-      <fieldset>
-        <legend>Health & Intake Questionnaire</legend>
+          <fieldset>
+            <legend>Participant Information</legend>
 
-        <label>1. Do you have any current injuries or physical limitations?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="injuries_limitations" value="Yes" required /> Yes</label>
-          <label><input type="radio" name="injuries_limitations" value="No" required /> No</label>
-        </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="full_name" required />
+              </div>
 
-        <label for="injuriesExplain">If yes, please explain:</label>
-        <textarea id="injuriesExplain" name="injuries_explanation" rows="3"></textarea>
+              <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="date_of_birth" required />
+              </div>
 
-        <label>2. Do you have any chronic conditions (e.g., heart condition, high blood pressure, joint issues)?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="chronic_conditions" value="Yes" required /> Yes</label>
-          <label><input type="radio" name="chronic_conditions" value="No" required /> No</label>
-        </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone_number" required />
+              </div>
 
-        <label for="conditionsExplain">If yes, please explain:</label>
-        <textarea id="conditionsExplain" name="conditions_explanation" rows="3"></textarea>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email_address" required />
+              </div>
 
-        <label>3. Are you currently pregnant?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="pregnant" value="Yes" required /> Yes</label>
-          <label><input type="radio" name="pregnant" value="No" required /> No</label>
-        </div>
-
-        <label>4. Are you taking any medications that may affect your physical activity?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="medications_affect_activity" value="Yes" required /> Yes</label>
-          <label><input type="radio" name="medications_affect_activity" value="No" required /> No</label>
-        </div>
-
-        <label for="medicationsExplain">If yes, please explain:</label>
-        <textarea id="medicationsExplain" name="medications_explanation" rows="3"></textarea>
-
-        <label for="otherInfo">5. Is there anything else you would like your instructor to know?</label>
-        <textarea id="otherInfo" name="other_information" rows="4"></textarea>
-      </fieldset>
-
-      <fieldset>
-        <legend>Acknowledgment & Waiver</legend>
-
-        <div class="waiver-text">
-          <p>
-            I understand that participation in yoga and wellness activities includes
-            physical movement and exertion. I acknowledge that these activities carry
-            inherent risks, including but not limited to muscle strain, injury, or
-            other physical harm. I affirm that I am voluntarily participating in these
-            activities and that I am in sufficient physical condition to do so.
-          </p>
-
-          <p>I agree to:</p>
-          <ul>
-            <li>Listen to my body and practice within my own limits</li>
-            <li>Modify or stop any movement that causes pain or discomfort</li>
-            <li>Inform the instructor of any changes in my health</li>
-          </ul>
-
-          <p>
-            I hereby release and discharge WellBodyMind Yoga, its instructor(s), and
-            the Dryden Community Center from any and all liability, claims, or demands
-            arising from participation in classes, including injury, loss, or damages.
-            I understand that instruction is not a substitute for medical advice,
-            diagnosis, or treatment.
-          </p>
-        </div>
-
-        <label class="checkbox">
-          <input type="checkbox" name="waiver_agreement" required />
-          I have read and agree to the liability waiver above.
-        </label>
-
-        <label for="signature">Typed Signature</label>
-        <input type="text" id="signature" name="typed_signature" required />
-
-        <label for="signatureDate">Date</label>
-        <input type="date" id="signatureDate" name="signature_date" required />
-      </fieldset>
-          <!-- Footer -->
-    <footer class="footer">
-        <div class="footer__curve">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,60 C480,0 960,60 1440,20 L1440,60 L0,60 Z" fill="var(--color-deep-purple)"/>
-            </svg>
-        </div>
-        <div class="footer__inner">
-            <div class="container footer__grid">
-                <div class="footer__brand">
-                    <img src="wbm-logo-2.avif" alt="WellBodyMind" class="footer__logo">
-                    <p class="footer__tagline">Yoga for Wellness in Dryden</p>
-                </div>
-                <div class="footer__links">
-                    <h4>Quick Links</h4>
-                    <a href="#classes">Classes</a>
-                    <a href="#about">About</a>
-                    <!-- <a href="#testimonials">Testimonials</a> -->
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer__social">
-    <a href="https://www.facebook.com/profile.php?id=61585942892415" target="_blank" rel="noopener">
-        Follow us on Facebook
-    </a>
-</div>
-                <!--
-                <div class="footer__legal">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Accessibility</a>
-                    <a href="#">Terms &amp; Conditions</a>
-                    <a href="#">Refund Policy</a>
-                </div>
-            -->
+              <div class="form-group full-width">
+                <label for="emergencyContact">Emergency Contact Name & Phone</label>
+                <input type="text" id="emergencyContact" name="emergency_contact" required />
+              </div>
             </div>
-            <div class="container footer__bottom">
-                <p>&copy; 2026 WellBodyMind. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+          </fieldset>
 
-    <script src="js/main.js"></script>
+          <fieldset>
+            <legend>Health &amp; Intake Questionnaire</legend>
+
+            <div class="question-block">
+              <span class="question-label">1. Do you have any current injuries or physical limitations?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="injuries_limitations" value="Yes" required /> Yes</label>
+                <label><input type="radio" name="injuries_limitations" value="No" required /> No</label>
+              </div>
+
+              <div class="form-group">
+                <label for="injuriesExplain">If yes, please explain:</label>
+                <textarea id="injuriesExplain" name="injuries_explanation"></textarea>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <span class="question-label">2. Do you have any chronic conditions (e.g., heart condition, high blood pressure, joint issues)?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="chronic_conditions" value="Yes" required /> Yes</label>
+                <label><input type="radio" name="chronic_conditions" value="No" required /> No</label>
+              </div>
+
+              <div class="form-group">
+                <label for="conditionsExplain">If yes, please explain:</label>
+                <textarea id="conditionsExplain" name="conditions_explanation"></textarea>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <span class="question-label">3. Are you currently pregnant?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="pregnant" value="Yes" required /> Yes</label>
+                <label><input type="radio" name="pregnant" value="No" required /> No</label>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <span class="question-label">4. Are you taking any medications that may affect your physical activity?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="medications_affect_activity" value="Yes" required /> Yes</label>
+                <label><input type="radio" name="medications_affect_activity" value="No" required /> No</label>
+              </div>
+
+              <div class="form-group">
+                <label for="medicationsExplain">If yes, please explain:</label>
+                <textarea id="medicationsExplain" name="medications_explanation"></textarea>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="form-group">
+                <label for="otherInfo">5. Is there anything else you would like your instructor to know?</label>
+                <textarea id="otherInfo" name="other_information"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Acknowledgment &amp; Waiver</legend>
+
+            <div class="waiver-text">
+              <p>
+                I understand that participation in yoga and wellness activities includes
+                physical movement and exertion. I acknowledge that these activities carry
+                inherent risks, including but not limited to muscle strain, injury, or
+                other physical harm. I affirm that I am voluntarily participating in these
+                activities and that I am in sufficient physical condition to do so.
+              </p>
+
+              <p>I agree to:</p>
+              <ul>
+                <li>Listen to my body and practice within my own limits</li>
+                <li>Modify or stop any movement that causes pain or discomfort</li>
+                <li>Inform the instructor of any changes in my health</li>
+              </ul>
+
+              <p>
+                I hereby release and discharge WellBodyMind Yoga, its instructor(s), and
+                the Dryden Community Center from any and all liability, claims, or demands
+                arising from participation in classes, including injury, loss, or damages.
+                I understand that instruction is not a substitute for medical advice,
+                diagnosis, or treatment.
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-row">
+                <input type="checkbox" name="waiver_agreement" required />
+                <span>I have read and agree to the liability waiver above.</span>
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="signature">Typed Signature</label>
+                <input type="text" id="signature" name="typed_signature" required />
+              </div>
+
+              <div class="form-group">
+                <label for="signatureDate">Date</label>
+                <input type="date" id="signatureDate" name="signature_date" required />
+              </div>
+            </div>
+
+            <div class="submit-wrapper">
+              <button type="submit" class="submit-button">Submit Registration</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-spacer"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">© WellBodyMind Yoga. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Optional nav toggle support -->
+  <script>
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    const mobileOverlay = document.getElementById("mobileOverlay");
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("is-open");
+        navToggle.classList.toggle("is-active");
+
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+
+        if (mobileOverlay) {
+          mobileOverlay.classList.toggle("is-visible");
+        }
+      });
+    }
+
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        navToggle.classList.remove("is-active");
+        navToggle.setAttribute("aria-expanded", "false");
+        mobileOverlay.classList.remove("is-visible");
+      });
+    }
+  </script>
 </body>
 </html>
-
-      <button type="submit">Submit Registration</button>
-    </form>
-  </div>
-</section>
